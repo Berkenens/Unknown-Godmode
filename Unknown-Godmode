@@ -1,0 +1,16 @@
+local Why      = game:GetService("Players").LocalPlayer
+        local Char     = Why.Character
+        local backpack = Why.Backpack
+
+        Char.Humanoid:UnequipTools()
+        wait()
+        for i,v in next, backpack:GetDescendants() do
+            if v:IsA("Tool") and v.Name =="Shield" then
+                v.GripPos         = Vector3.new(0,10000,0)
+                v.Handle.Massless = true
+                v.Parent          = Char
+                v:Activate()
+                v.ShieldPotion:Destroy()
+                v:Destroy()
+            end
+        end
